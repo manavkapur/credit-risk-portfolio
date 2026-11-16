@@ -1,0 +1,174 @@
+{
+  "seed": 42,
+  "python": "3.11.14",
+  "sklearn": "1.6.1",
+  "data_sha256": "95f95150d8286438ed52a52ea464865088d601334e0375fe432229bae897853b",
+  "features": [
+    "age",
+    "annual_income",
+    "years_employed",
+    "num_dependents",
+    "years_at_residence",
+    "loan_amount",
+    "interest_rate_pct",
+    "tenure_months",
+    "collateral_flag",
+    "bureau_line_count",
+    "bureau_active_count",
+    "bureau_writeoff_count",
+    "bureau_outstanding_total",
+    "bureau_utilization",
+    "bureau_dpd_mean",
+    "bureau_dpd_max",
+    "bureau_dpd_missing_count",
+    "repayment_dpd_mean",
+    "repayment_dpd_max",
+    "repayment_missed_rate",
+    "repayment_payment_ratio",
+    "latest_dpd",
+    "dpd_recent_change",
+    "payment_ratio_recent_change",
+    "employment_type",
+    "region",
+    "loan_type",
+    "disbursal_channel",
+    "housing_type",
+    "city_tier"
+  ],
+  "split_accounts": {
+    "train": 8826,
+    "test": 2968,
+    "validation": 2891
+  },
+  "split_customers": {
+    "test": 2027,
+    "train": 5969,
+    "validation": 2004
+  },
+  "selected_model": "logistic_regression",
+  "selection_rule": "Highest validation ROC-AUC; fixed hyperparameters; no test-set selection.",
+  "review_threshold": 0.28613357231419384,
+  "review_threshold_rule": "90th percentile of selected-model validation scores; illustrative capacity rule, not an approval threshold.",
+  "selected_test_at_review_threshold": {
+    "roc_auc": 0.6784100115401549,
+    "ks": 0.2660383404059113,
+    "gini": 0.3568200230803098,
+    "average_precision": 0.32334949167974547,
+    "brier_score": 0.12169186023075877,
+    "threshold": 0.28613357231419384,
+    "precision": 0.34983498349834985,
+    "recall": 0.23093681917211328,
+    "confusion_matrix_tn_fp_fn_tp": [
+      2312,
+      197,
+      353,
+      106
+    ],
+    "accounts": 2968,
+    "default_rate": 0.15464959568733153
+  },
+  "models": {
+    "logistic_regression": {
+      "validation": {
+        "roc_auc": 0.6918219507517077,
+        "ks": 0.2936492128830464,
+        "gini": 0.38364390150341543,
+        "average_precision": 0.2969792474934174,
+        "brier_score": 0.12120251392856654,
+        "threshold": 0.5,
+        "precision": 0.23333333333333334,
+        "recall": 0.01580135440180587,
+        "confusion_matrix_tn_fp_fn_tp": [
+          2425,
+          23,
+          436,
+          7
+        ],
+        "accounts": 2891,
+        "default_rate": 0.15323417502594258
+      },
+      "test": {
+        "roc_auc": 0.6784100115401549,
+        "ks": 0.2660383404059113,
+        "gini": 0.3568200230803098,
+        "average_precision": 0.32334949167974547,
+        "brier_score": 0.12169186023075877,
+        "threshold": 0.5,
+        "precision": 0.8095238095238095,
+        "recall": 0.037037037037037035,
+        "confusion_matrix_tn_fp_fn_tp": [
+          2505,
+          4,
+          442,
+          17
+        ],
+        "accounts": 2968,
+        "default_rate": 0.15464959568733153
+      }
+    },
+    "hist_gradient_boosting": {
+      "validation": {
+        "roc_auc": 0.6731546644240842,
+        "ks": 0.26121844524115145,
+        "gini": 0.34630932884816845,
+        "average_precision": 0.27172803931969813,
+        "brier_score": 0.1234769198919157,
+        "threshold": 0.5,
+        "precision": 0.2777777777777778,
+        "recall": 0.022573363431151242,
+        "confusion_matrix_tn_fp_fn_tp": [
+          2422,
+          26,
+          433,
+          10
+        ],
+        "accounts": 2891,
+        "default_rate": 0.15323417502594258
+      },
+      "test": {
+        "roc_auc": 0.6699585196994522,
+        "ks": 0.26444147474321206,
+        "gini": 0.3399170393989044,
+        "average_precision": 0.2793119756007824,
+        "brier_score": 0.12408967204032798,
+        "threshold": 0.5,
+        "precision": 0.4166666666666667,
+        "recall": 0.032679738562091505,
+        "confusion_matrix_tn_fp_fn_tp": [
+          2488,
+          21,
+          444,
+          15
+        ],
+        "accounts": 2968,
+        "default_rate": 0.15464959568733153
+      }
+    }
+  },
+  "no_repayment_baseline_test": {
+    "roc_auc": 0.6660657797506319,
+    "ks": 0.24932812680450595,
+    "gini": 0.3321315595012637,
+    "average_precision": 0.3083418718675888,
+    "brier_score": 0.12291498799539605,
+    "threshold": 0.5,
+    "precision": 0.8571428571428571,
+    "recall": 0.026143790849673203,
+    "confusion_matrix_tn_fp_fn_tp": [
+      2507,
+      2,
+      447,
+      12
+    ],
+    "accounts": 2968,
+    "default_rate": 0.15464959568733153
+  },
+  "limitations": [
+    "Retrospective synthetic-data classification, not prospective default forecasting.",
+    "No default date/outcome horizon; bureau, repayment and customer attributes lack point-in-time guarantees.",
+    "Training rows have in-sample scores; test metrics only describe untouched held-out customers.",
+    "Raw model probabilities are uncalibrated estimates, not validated bank PDs.",
+    "Local coefficient explanations belong to the baseline only, not the challenger.",
+    "Permutation importance uses validation AUC; correlated features may mask individual importance."
+  ]
+}

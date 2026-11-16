@@ -1,0 +1,40 @@
+{
+  "accounts": 14685,
+  "customers": 10000,
+  "defaults": 2364,
+  "default_rate": 0.1609805924412666,
+  "original_loan_amount": 601119531.64,
+  "latest_recorded_balance": 512637943.19,
+  "insights": [
+    {
+      "dimension": "employment_type",
+      "finding": "Unemployed has the highest observed account default rate: 34.96% (251/718), versus 13.56% for Business Owner (250/1,844); gap 21.40 percentage points.",
+      "so_what": "Prioritize manual review and investigate affordability within this segment; association does not establish causation.",
+      "source": "reports/analytics/by_employment_type.csv"
+    },
+    {
+      "dimension": "income_band",
+      "finding": "Under $30k has the highest observed account default rate: 38.67% (174/450), versus 9.52% for $100k+ (295/3,098); gap 29.14 percentage points.",
+      "so_what": "Review affordability and payment burden in this income band, using count and exposure alongside the observed default rate.",
+      "source": "reports/analytics/by_income_band.csv"
+    },
+    {
+      "dimension": "loan_type",
+      "finding": "Mortgage has the highest observed account default rate: 24.65% (353/1,432), versus 13.88% for Auto Loan (393/2,832); gap 10.77 percentage points.",
+      "so_what": "Focus product-level monitoring on this segment and compare its risk concentration with its share of original lending.",
+      "source": "reports/analytics/by_loan_type.csv"
+    },
+    {
+      "dimension": "region",
+      "finding": "South has the highest observed account default rate: 16.86% (607/3,600), versus 15.00% for Central (347/2,314); gap 1.87 percentage points.",
+      "so_what": "Investigate regional mix and underwriting differences before attributing the gap to location itself.",
+      "source": "reports/analytics/by_region.csv"
+    },
+    {
+      "dimension": "income_band \u00d7 employment_type",
+      "finding": "Among cross-segments with at least 100 accounts, Under $30k / Unemployed has the highest observed default rate: 44.30% (101/228).",
+      "so_what": "Use the combined segment to prioritize analyst review; validate on a later cohort before changing policy.",
+      "source": "reports/analytics/by_income_and_employment.csv"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "sources": {
+    "customers": {
+      "sha256": "a194e65ccc40979c55675a7b41d0d4c4f7cd27299771718c1e7db69be29259a6",
+      "rows": 10000,
+      "missing": {
+        "customer_id": 0,
+        "age": 0,
+        "gender": 0,
+        "marital_status": 0,
+        "education_level": 0,
+        "employment_type": 0,
+        "occupation_sector": 0,
+        "years_employed": 500,
+        "annual_income": 0,
+        "region": 0,
+        "city_tier": 0,
+        "num_dependents": 500,
+        "housing_type": 0,
+        "years_at_residence": 500,
+        "customer_since": 0
+      },
+      "exact_duplicates": 0
+    },
+    "loan_accounts": {
+      "sha256": "6cbe24fadd1545b03e319208a4f2cdaea1e2623c72e7c3ac1cebfdd77a03792a",
+      "rows": 14685,
+      "missing": {
+        "account_id": 0,
+        "customer_id": 0,
+        "loan_type": 0,
+        "loan_purpose": 0,
+        "loan_amount": 0,
+        "interest_rate_pct": 294,
+        "tenure_months": 0,
+        "origination_date": 0,
+        "disbursal_channel": 0,
+        "collateral_flag": 0,
+        "target_default": 0
+      },
+      "exact_duplicates": 0
+    },
+    "bureau_credit": {
+      "sha256": "a5ffa76b67bfbd4452e19cfef16503e128ab1bccf7617a5d4ed77a055c7e1603",
+      "rows": 22979,
+      "missing": {
+        "bureau_id": 0,
+        "customer_id": 0,
+        "credit_type": 0,
+        "lender_category": 0,
+        "sanctioned_amount": 0,
+        "outstanding_amount": 0,
+        "account_status": 0,
+        "days_past_due": 689,
+        "date_opened": 0,
+        "date_closed": 11243
+      },
+      "exact_duplicates": 0
+    },
+    "repayment_history": {
+      "sha256": "1a7161b868e7fc9e9f7f449cf4e1d4ea45cf2b21a4df997963a5d1165f1e5129",
+      "rows": 176220,
+      "missing": {
+        "account_id": 0,
+        "payment_month": 0,
+        "emi_due": 0,
+        "emi_paid": 0,
+        "days_past_due": 0,
+        "payment_status": 0,
+        "outstanding_balance": 0
+      },
+      "exact_duplicates": 0
+    },
+    "collections_events": {
+      "sha256": "76442b5e09d6b03becde563409e17c6431e5359d6ffb09e819061df594615ae5",
+      "rows": 8635,
+      "missing": {
+        "collection_event_id": 0,
+        "account_id": 0,
+        "event_date": 0,
+        "action_type": 0,
+        "outcome": 0,
+        "amount_recovered": 0
+      },
+      "exact_duplicates": 0
+    }
+  },
+  "checks": {
+    "gender_labels_normalized": 600,
+    "output_accounts": 14685,
+    "distinct_customers": 10000,
+    "original_loan_amount_total": 601119531.64,
+    "latest_recorded_balance_total": 512637943.19,
+    "default_count": 2364,
+    "default_rate": 0.1609805924412666,
+    "accounts_without_bureau": 1462,
+    "accounts_without_repayments": 0,
+    "zero_due_payment_rows": 0,
+    "on_time_rows_with_positive_dpd": 0,
+    "accounts_with_nonconsecutive_months": 0,
+    "grain_and_financial_reconciliations": "PASS"
+  },
+  "timing": {
+    "collections_before_origination": 3875,
+    "loan_bureau_pairs_opened_after_origination": 21104,
+    "customer_relationship_after_loan": 7293,
+    "bureau_closed_before_opened": 0,
+    "default_date_available": false,
+    "outcome_horizon_available": false
+  }
+}

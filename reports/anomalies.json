@@ -1,0 +1,17 @@
+{
+  "version": "95f95150d8286438-anomaly-v1",
+  "accounts": 14685,
+  "flagged": 1747,
+  "isolation_forest_threshold": 0.6274660956046376,
+  "features": [
+    "repayment_dpd_mean",
+    "repayment_missed_rate",
+    "repayment_payment_ratio",
+    "dpd_recent_change",
+    "payment_ratio_recent_change",
+    "bureau_utilization",
+    "bureau_dpd_max"
+  ],
+  "default_label_used": false,
+  "limitations": "Historical outlier detection fitted to this extract. No labelled anomaly ground truth; false-negative rate unknown. Bureau peers use unique customers. Forest score is not a default probability."
+}
