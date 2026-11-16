@@ -12,6 +12,13 @@ from src.analytics import add_bands, summarize
 from src.reviews import read_reviews, save_review
 
 st.set_page_config(page_title='Credit Risk Portfolio',page_icon='📊',layout='wide')
+for name in ['DATABASE_URL','OPENAI_API_KEY','LANGFUSE_PUBLIC_KEY','LANGFUSE_SECRET_KEY','LANGFUSE_BASE_URL']:
+    if not os.getenv(name):
+        try:
+            if st.secrets.get(name):
+                os.environ[name]=st.secrets[name]
+        except Exception:
+            pass
 
 
 @st.cache_data
@@ -132,7 +139,7 @@ if view == 'Anomaly review':
                     st.rerun()
                 except Exception:
                     st.error('Decision could not be saved. Check review storage configuration.')
-    st.caption('Local reviews survive app restarts. Hosted deployment requires durable storage; reviewer names are demo labels.')
+    st.caption(('Managed PostgreSQL storage configured.' if os.getenv('DATABASE_URL') else 'Local SQLite storage; hosted persistence needs DATABASE_URL.')+' Reviewer names are demo labels.')
     st.download_button('Download review history',reviews.to_csv(index=False),'review_history.csv','text/csv')
     with st.expander('Review history'):
         st.dataframe(reviews,hide_index=True,use_container_width=True)

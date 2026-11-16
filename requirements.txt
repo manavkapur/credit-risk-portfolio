@@ -104,6 +104,8 @@ plotly==6.1.2
 prompt-toolkit==3.0.53
 propcache==0.5.4
 protobuf==6.33.6
+psycopg==3.2.9
+psycopg-binary==3.2.9
 py-rust-stemmers==0.1.8
 pyarrow==19.0.1
 pycparser==3.12

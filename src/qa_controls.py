@@ -5,6 +5,7 @@ import sqlite3
 import time
 from pathlib import Path
 from src.build_data import ROOT
+from src.storage import Database
 
 
 class GuardrailError(ValueError):
@@ -23,7 +24,7 @@ def admission(question):
 def connect():
     path=Path(os.getenv('QA_DB_PATH',str(ROOT/'data/qa_controls.sqlite3')))
     path.parent.mkdir(parents=True,exist_ok=True)
-    db=sqlite3.connect(path,timeout=15)
+    db=Database(path)
     db.execute('CREATE TABLE IF NOT EXISTS calls (created REAL, actor TEXT, tokens INTEGER)')
     db.execute('CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, created REAL, response TEXT)')
     return db

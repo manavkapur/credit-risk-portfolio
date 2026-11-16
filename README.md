@@ -1,5 +1,7 @@
 # Credit Risk Portfolio
 
+For Streamlit Community Cloud with persistent managed PostgreSQL, see `docs/streamlit_deployment.md`. Set `DATABASE_URL` in server secrets; the app creates review, quota and cache tables automatically. Without it, local SQLite is used.
+
 Data foundation for the credit-risk case study. Python **3.11** (tested with 3.11.14).
 Data preparation, analytics, models, anomaly detection, the dashboard and the Ask the Portfolio workflow are implemented.
 

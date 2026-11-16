@@ -1,0 +1,26 @@
+# Render Blueprint: paid compute + durable disk. Review price in Render before creating.
+services:
+  - type: web
+    name: credit-risk-portfolio
+    runtime: docker
+    plan: starter
+    healthCheckPath: /_stcore/health
+    envVars:
+      - key: PORT
+        value: "7860"
+      - key: REVIEW_DB_PATH
+        value: /data/reviews.sqlite3
+      - key: QA_DB_PATH
+        value: /data/qa_controls.sqlite3
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: LANGFUSE_PUBLIC_KEY
+        sync: false
+      - key: LANGFUSE_SECRET_KEY
+        sync: false
+      - key: LANGFUSE_BASE_URL
+        value: https://us.cloud.langfuse.com
+    disk:
+      name: portfolio-storage
+      mountPath: /data
+      sizeGB: 1
